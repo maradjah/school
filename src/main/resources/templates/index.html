@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Students</title>
+
+
+    <link href="webjars/bootstrap/4.1.1/css/bootstrap.min.css"
+          rel="stylesheet">
+
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card text-center" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <h1 class="panel-title">
+                            Students
+                        </h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive" th:if="${not #lists.isEmpty(students)}">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>School</th>
+                                    <th>View</th>
+                                </tr>
+                                <tr th:each=" student : ${students}">
+                                    <td th:text="${student.id}"></td>
+                                    <td th:text="${student.firstName}"></td>
+                                    <td th:text="${student.lastName}"></td>
+                                    <td th:text="${student.school}"></td>
+                                    <td><a href="" th:href="@{'/student/show/' + ${student.id}}">View</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="webjars/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="webjars/jquery/3.3.0/jquery.min.js"></script>
+</body>
+</html>
